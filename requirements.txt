@@ -1,0 +1,9 @@
+langchain
+langchain_community
+langchain-groq
+chromadb
+beautifulsoup4
+pypdf2
+ollama
+gpt4all
+faiss-cpu
