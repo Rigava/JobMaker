@@ -12,7 +12,7 @@ from langchain_community.document_loaders import WebBaseLoader
 
 # Toggle to the secret keys when deploying in streamlit community
 
-key =st.secrets.API_KEY
+groq_key =st.secrets.API_KEY
 # groq_key = "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"
 
 
