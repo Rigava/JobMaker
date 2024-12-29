@@ -7,3 +7,4 @@ pypdf2
 ollama
 gpt4all
 faiss-cpu
+sentence-transformers
