@@ -12,7 +12,7 @@ from langchain_community.document_loaders import WebBaseLoader
 
 # Toggle to the secret keys when deploying in streamlit community
 
-key =st.secrets.API_KEY
+groq_key = st.secrets.API_KEY
 
 
 
@@ -143,7 +143,7 @@ def generate_response(url, cv, key, temperature, cv_improvements, cover_letter):
 def main():
 
   try:
-     # Retrieve the OpenAI API key from the environment variable
+     # Retrieve the Groq API key from the environment variable
       key = groq_key
   except:
       key = ''
@@ -198,7 +198,7 @@ def main():
         else:
           st.warning('There may be a problem. Please Check Your URL.', icon='⚠')
       else:
-        st.warning('There may be a problem. Please Check Your OpenAI API Key.', icon='⚠')
+        st.warning('There may be a problem. Please Check Your Groq API Key.', icon='⚠')
   return
 
 if __name__ == "__main__":
