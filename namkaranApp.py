@@ -29,8 +29,8 @@ if names:
         # Process the input words
         words = [word.strip().lower() for word in search_words.split(",")]
 
-        # Filter names that contain any of the selected words
-        matching_names = [name for name in names if any(word in name.lower() for word in words)]
+        # Filter names that begin with any of the selected words
+        matching_names = [name for name in names if any(name.lower().startswith(word) for word in words)]
 
         if matching_names:
             st.write("### Matching Names:")
