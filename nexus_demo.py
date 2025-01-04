@@ -21,7 +21,7 @@ prompt1 = PromptTemplate(
 chain1= LLMChain(
     llm=llm,
     prompt=prompt1,
-    output_key="prop_soln"
+    output_key="result"
 )
 chain = SequentialChain(
     chains=[chain1],
