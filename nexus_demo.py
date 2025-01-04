@@ -9,8 +9,8 @@ llm = ChatGroq(temperature=0,groq_api_key = key,model_name = 'llama-3.1-70b-vers
 
 template1 = """
 I have a risk assessment to be created based in a tabular format with columns of task, hazard, severity, likelihood,
-risk rating,control measure,control measure type,residual risk rating for the activity in {input}
-Provide {number} distinct hazard and I want you to take into external consideration, factors such as {factors}
+risk rating,control measure,control measure type,residual risk rating for the activity such as {input}.
+Provide {number} distinct control and I want you to take into external consideration, factors such as {factors}
 """
 
 prompt1 = PromptTemplate(
@@ -31,8 +31,8 @@ chain = SequentialChain(
 
 st.header("Nexus Project")
 
-inp = st.text_input("Input", placeholder="Input", label_visibility='visible')
-factors = st.text_input("Factors concerning the input", placeholder="Factors", label_visibility='visible')
+inp = st.text_input("Activity", placeholder="Activity", label_visibility='visible')
+factors = st.text_input("Hazards concerning the input", placeholder="Hazards", label_visibility='visible')
 num = st.slider("How many distinct solutions do you want ?", 2, 5, step=1)
 
 
