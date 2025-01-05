@@ -44,14 +44,14 @@ chain1= LLMChain(
 
 template2 = """
 Extract {prop_soln}  into JSON with this structure:
-{"Task": ,
+"Task": ,
 "Hazard": ,
 "Severity": ,
 "Likelihood":,
 "risk rating":,
 "control measure":,
 "control measure type":,
-"residual risk rating": }
+"residual risk rating": 
 """
 
 prompt2 = PromptTemplate(
