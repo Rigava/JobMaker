@@ -9,8 +9,8 @@ llm = ChatGroq(temperature=0,groq_api_key = key,model_name = 'llama-3.1-70b-vers
 
 template1 = """
 I have a risk assessment to be created based in a tabular format with columns of task, hazard, severity, likelihood,
-risk rating,control measure,control measure type,residual risk rating for the activity such as {input}.
-Provide {number} distinct hazard and I want you to take into external consideration, factors such as {factors}.
+risk rating,control measure,control measure type,residual risk rating for the activity such as {input} in {industry}.
+Provide {number} distinct hazard based on the work area {conditions) and I want you to take into external consideration, factors such as {factors}.
 There can be multiple control measures to mitigate impact of each hazard. The risk rating is a product of severity and likelihood. 
 Severity is from 1 to 5 (5 is high) and likelihood is from 1 to 5 (5 is high). 
 Control measure type can be either elimination of hazards, substitution of activity, process measure to control the hazard, or Personal protective equipment 
@@ -23,7 +23,7 @@ However, for the subsequent controls to the same hazard, the residual risk calcu
 """
 
 prompt1 = PromptTemplate(
-    input_variables=["input", "factors", "number"],
+    input_variables=["input","industry","condition","factors", "number"],
     template=template1
 )
 
@@ -34,19 +34,21 @@ chain1= LLMChain(
 )
 chain = SequentialChain(
     chains=[chain1],
-    input_variables=["input", "factors", "number"],
+    input_variables=["input","industry","condition","factors", "number"],
     output_variables=["result"]
 )
 
 st.header("Nexus Project")
 
 inp = st.text_input("Activity", placeholder="Activity", label_visibility='visible')
+ind = st.text_input("Industry", placeholder="Logistic", label_visibility='visible')
+con = st.text_input("Condition", placeholder="Inside an enclosed space", label_visibility='visible')
 factors = st.text_input("Factors influencing the activity", placeholder="Factors", label_visibility='visible')
-num = st.slider("How many distinct solutions do you want ?", 2, 5, step=1)
+num = st.slider("How many distinct hazards do you want ?", 2, 5, step=1)
 
 
 if st.button("THINK", use_container_width=True):
-    res = chain({"input" : inp, "factors" : factors, "number" : num})
+    res = chain({"input" : inp, "industry":ind, "condition":con, "factors" : factors, "number" : num})
 
     st.write("")
     st.write(":blue[Response]")
