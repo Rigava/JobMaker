@@ -16,6 +16,9 @@ Severity is from 1 to 5 (5 is high) and likelihood is from 1 to 5 (5 is high).
 Control measure type can be either elimination of hazards, substitution of activity, process measure to control the hazard, or Personal protective equipment 
 for the person. When elimination of hazards is chosen then reduce the risk rating by 90% and provide residual rating in the table. 
 Similarly, for substitution reduce by 75%, for process measure to control the hazard reduce by 50%, and for Personal protective equipment reduce by 25%.
+When there are multiple controls measures for a hazard, then the residual risk calculation for first controls is applied on the original risk rating. 
+However, for the subsequent controls to the same hazard, the residual risk calculation of the 2nd controls is applied on the residual risk of 1st controls
+
 
 """
 
