@@ -10,7 +10,7 @@ llm = ChatGroq(temperature=0,groq_api_key = key,model_name = 'llama-3.1-70b-vers
 template1 = """
 I have a risk assessment to be created based in a tabular format with columns of task, hazard, severity, likelihood,
 risk rating,control measure,control measure type,residual risk rating for the activity such as {input} in the {industry}.
-Provide {number} distinct hazard based on the work area {conditions) and I want you to take into external consideration, factors such as {factors}.
+Provide {number} distinct hazard based on the work area {condition} and I want you to take into external consideration, factors such as {factors}.
 There can be multiple control measures to mitigate impact of each hazard. The risk rating is a product of severity and likelihood. 
 Severity is from 1 to 5 (5 is high) and likelihood is from 1 to 5 (5 is high). 
 Control measure type can be either elimination of hazards, substitution of activity, process measure to control the hazard, or Personal protective equipment 
