@@ -93,8 +93,11 @@ if st.button("THINK", use_container_width=True):
     st.write(":blue[Response]")
     st.write("")
 
-    st.markdown(res['result'])
-    df =get_df_response(res['result'])
+    # st.markdown(res['result'])
+
+    data = json.dumps(res['result'])
+    st.write(data)
+    df =get_df_response(data)
     csv = df.to_csv(index=False)
     st.download_button(
     label="Export as CSV",
