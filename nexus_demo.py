@@ -4,6 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from langchain_core.output_parsers import JsonOutputParser
 import json
+import pandas as pd
 # Define the expected JSON structure
 parser = JsonOutputParser(pydantic_object={
     "type": "object",
@@ -71,7 +72,9 @@ chain = SequentialChain(
     output_variables=["result"]
 )
 
-
+def get_df_response(data):
+    # Example tabular data (can be replaced with your actual LLM response)
+    return pd.DataFrame(data)
 
 
 st.header("Nexus Project")
@@ -91,4 +94,15 @@ if st.button("THINK", use_container_width=True):
     st.write("")
 
     st.markdown(res['result'])
+    df =get_df_response(res['result'])
+    csv = df.to_csv(index=False)
+    st.download_button(
+    label="Export as CSV",
+    data=csv,
+    file_name="llm_response.csv",
+    mime="text/csv"        )
+
     
+    
+
+
