@@ -2,7 +2,18 @@ import streamlit as st
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
-
+from langchain_core.output_parsers import JsonOutputParser
+import json
+# Define the expected JSON structure
+parser = JsonOutputParser(pydantic_object={
+    "type": "object",
+    "properties": {
+        "Task": {"type": "string"},
+        "Hazard": {"type": "string"},
+        "Severity": {"type": "number"},
+        "Likelihood": {"type": "number"}
+    }
+})
 key =st.secrets.API_KEY
 
 llm = ChatGroq(temperature=0,groq_api_key = key,model_name = 'llama-3.1-70b-versatile')
@@ -28,13 +39,37 @@ prompt1 = PromptTemplate(
 chain1= LLMChain(
     llm=llm,
     prompt=prompt1,
+    output_key="prop_soln"
+)
+
+template2 = """
+Extract {prop_soln}  into JSON with this structure:
+{{"Task": {"type": "string"},
+        "Hazard": {"type": "string"},
+        "Severity": {"type": "number"},
+        "Likelihood": {"type": "number"}
+        }}
+"""
+
+prompt2 = PromptTemplate(
+    input_variables=["prop_soln"],
+    template=template2
+)
+
+chain2 = LLMChain(
+    llm = llm,
+    prompt=prompt2,
     output_key="result"
 )
+
 chain = SequentialChain(
-    chains=[chain1],
+    chains=[chain1,chain2],
     input_variables=["input","industry","condition","factors","number"],
     output_variables=["result"]
 )
+
+
+
 
 st.header("Nexus Project")
 
@@ -53,3 +88,4 @@ if st.button("THINK", use_container_width=True):
     st.write("")
 
     st.markdown(res['result'])
+    
