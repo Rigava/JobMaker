@@ -94,7 +94,7 @@ if st.button("THINK", use_container_width=True):
     st.write("")
     st.markdown(res)
     
-    st.write(type(res['result'])
+    st.write(type(res['result']))
     data = json.dumps(res['result'])
     st.write(data)
     # df =get_df_response(data)
