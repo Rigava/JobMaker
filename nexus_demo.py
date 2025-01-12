@@ -29,7 +29,8 @@ Control measure type can be either elimination of hazards, substitution of activ
 for the person. When elimination of hazards is chosen then reduce the risk rating by 90% and provide residual rating in the table. 
 Similarly, for substitution reduce by 75%, for process measure to control the hazard reduce by 50%, and for Personal protective equipment reduce by 25%.
 When there are multiple controls measures for a hazard, then the residual risk calculation for first controls is applied on the original risk rating. 
-However, for the subsequent controls to the same hazard, the residual risk calculation of the 2nd controls is applied on the residual risk of 1st controls
+However, for the subsequent controls to the same hazard, the residual risk calculation of the 2nd controls is applied on the residual risk of 1st controls.
+The output should only be in a table format and no text.
 """
 
 prompt1 = PromptTemplate(
@@ -84,7 +85,7 @@ inp = st.text_input("Activity", placeholder="Activity", label_visibility='visibl
 ind = st.text_input("Industry", placeholder="Logistic", label_visibility='visible')
 con = st.text_input("Condition", placeholder="Inside an enclosed space", label_visibility='visible')
 factors = st.text_input("Factors influencing the activity", placeholder="Factors", label_visibility='visible')
-num = st.slider("How many distinct hazards do you want ?", 2, 5, step=1)
+num = st.slider("How many distinct hazards do you want ?", 1, 8, step=1)
 
 
 if st.button("THINK", use_container_width=True):
@@ -93,11 +94,13 @@ if st.button("THINK", use_container_width=True):
     st.write("")
     st.write(":blue[Response]")
     st.write("")
+    st.markdown(type(res['result']))
     st.markdown(res['result'])
     
-    # st.write(type(res['result']))
+  
     data = json.dumps(res['result'])
-    # st.write(data)
+    st.markdown(type(data))
+    st.write(data)
 
     
     
