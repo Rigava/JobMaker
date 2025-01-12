@@ -94,7 +94,7 @@ if st.button("THINK", use_container_width=True):
     st.write("")
     st.write(":blue[Response]")
     st.write("")
-    st.markdown(type(res['result']))
+    # st.markdown(type(res['result']))
     st.markdown(res['result'])
     
   
