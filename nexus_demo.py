@@ -44,7 +44,7 @@ chain1= LLMChain(
 )
 
 template2 = """
-Extract {prop_soln}  into JSON with this structure:
+Extract the following columns from the provided {prop_soln} 
 "Task": ,
 "Hazard": ,
 "Severity": ,
