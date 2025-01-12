@@ -98,9 +98,6 @@ if st.button("THINK", use_container_width=True):
     st.markdown(res['result'])
     
   
-    data = json.dumps(res['result'])
-    st.markdown(type(data))
-    st.write(data)
 
     
     
