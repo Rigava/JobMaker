@@ -44,7 +44,7 @@ chain1= LLMChain(
 )
 
 template2 = """
-Extract the following columns from the provided {prop_soln} 
+Extract the following details from the provided {prop_soln} 
 "Task": ,
 "Hazard": ,
 "Severity": ,
