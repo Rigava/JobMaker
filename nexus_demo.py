@@ -85,7 +85,7 @@ inp = st.text_input("Activity", placeholder="Activity", label_visibility='visibl
 ind = st.text_input("Industry", placeholder="Logistic", label_visibility='visible')
 con = st.text_input("Condition", placeholder="Inside an enclosed space", label_visibility='visible')
 factors = st.text_input("Factors influencing the activity", placeholder="Factors", label_visibility='visible')
-num = st.slider("How many distinct hazards do you want ?", 1, 8, step=1)
+num = st.slider("How many distinct hazards do you want ?", 2, 5, step=1)
 
 
 if st.button("THINK", use_container_width=True):
