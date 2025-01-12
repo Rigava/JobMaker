@@ -53,6 +53,7 @@ Extract the following details from the provided {prop_soln}
 "control measure":,
 "control measure type":,
 "residual risk rating": 
+Provide the output in table format.
 """
 
 prompt2 = PromptTemplate(
