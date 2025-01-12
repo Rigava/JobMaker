@@ -92,18 +92,18 @@ if st.button("THINK", use_container_width=True):
     st.write("")
     st.write(":blue[Response]")
     st.write("")
-
     st.markdown(res)
-
+    
+    st.write(type(res['result'])
     data = json.dumps(res['result'])
     st.write(data)
-    df =get_df_response(data)
-    csv = df.to_csv(index=False)
-    st.download_button(
-    label="Export as CSV",
-    data=csv,
-    file_name="llm_response.csv",
-    mime="text/csv"        )
+    # df =get_df_response(data)
+    # csv = df.to_csv(index=False)
+    # st.download_button(
+    # label="Export as CSV",
+    # data=csv,
+    # file_name="llm_response.csv",
+    # mime="text/csv"        )
 
     
     
