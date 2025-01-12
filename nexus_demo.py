@@ -93,7 +93,7 @@ if st.button("THINK", use_container_width=True):
     st.write("")
     st.write(":blue[Response]")
     st.write("")
-    st.markdown(res)
+    st.markdown(res['result'])
     
     # st.write(type(res['result']))
     data = json.dumps(res['result'])
