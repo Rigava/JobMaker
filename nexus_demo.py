@@ -40,11 +40,11 @@ prompt1 = PromptTemplate(
 chain1= LLMChain(
     llm=llm,
     prompt=prompt1,
-    output_key="prop_soln"
+    output_key="result"
 )
 
 template2 = """
-Extract the following details from the provided {prop_soln} 
+Extract the following details from the provided {prop_soln} and Provide the output in a table format
 "Task": ,
 "Hazard": ,
 "Severity": ,
@@ -53,7 +53,7 @@ Extract the following details from the provided {prop_soln}
 "control measure":,
 "control measure type":,
 "residual risk rating": 
-Provide the output in table format.
+
 """
 
 prompt2 = PromptTemplate(
@@ -68,7 +68,7 @@ chain2 = LLMChain(
 )
 
 chain = SequentialChain(
-    chains=[chain1,chain2],
+    chains=[chain1],
     input_variables=["input","industry","condition","factors","number"],
     output_variables=["result"]
 )
@@ -97,14 +97,7 @@ if st.button("THINK", use_container_width=True):
     
     # st.write(type(res['result']))
     data = json.dumps(res['result'])
-    st.write(data)
-    # df =get_df_response(data)
-    # csv = df.to_csv(index=False)
-    # st.download_button(
-    # label="Export as CSV",
-    # data=csv,
-    # file_name="llm_response.csv",
-    # mime="text/csv"        )
+    # st.write(data)
 
     
     
