@@ -56,7 +56,7 @@ def run_llm(url, pdf,key, temperature):
     llm = ChatGroq(
     temperature=0,
     groq_api_key = key,
-    model_name = 'llama-3.1-70b-versatile')
+    model_name = 'llama-3.3-70b-versatile')
     pdf_qa = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=vectordb.as_retriever(search_kwargs={'k': 4}),
